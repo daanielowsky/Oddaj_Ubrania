@@ -10,7 +10,6 @@ public class Converter {
         user.setFirstName(form.getFirstName());
         user.setLastName(form.getLastName());
         user.setEmail(form.getEmail());
-        user.setPassword(form.getPassword());
         return user;
 
     }

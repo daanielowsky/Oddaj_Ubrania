@@ -40,7 +40,7 @@ public class RegistrationController {
         }
 
         if (!checkIsEmailAvaiable(form)) {
-            result.rejectValue("username", null, "Ten email jest już zajęty.");
+            result.rejectValue("email", null, "Ten email jest już zajęty.");
             return "registerpage";
         }
         userService.registerUser(form);
