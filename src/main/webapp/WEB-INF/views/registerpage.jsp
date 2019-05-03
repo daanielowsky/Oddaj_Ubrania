@@ -1,11 +1,4 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: DANIEL
-  Date: 29.04.2019
-  Time: 14:40
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pl">
@@ -13,7 +6,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Document</title>
+    <title>Oddaj Ubrania - Register Page</title>
     <link rel="stylesheet" href="/media/css/style.css"/>
 </head>
 <body>
@@ -21,15 +14,15 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li><a href="#">Zaloguj</a></li>
-            <li class="highlighted"><a href="#">Załóż konto</a></li>
+            <li class="highlighted"><a href="/register">Załóż konto</a></li>
         </ul>
 
         <ul>
-            <li><a href="#">Start</a></li>
-            <li><a href="#">O co chodzi?</a></li>
-            <li><a href="#">O nas</a></li>
-            <li><a href="#">Fundacje i organizacje</a></li>
-            <li><a href="#">Kontakt</a></li>
+            <li><a href="/">Start</a></li>
+            <li><a href="/">O co chodzi?</a></li>
+            <li><a href="/">O nas</a></li>
+            <li><a href="/">Fundacje i organizacje</a></li>
+            <li><a href="#concact">Kontakt</a></li>
         </ul>
     </nav>
 </header>
@@ -58,26 +51,10 @@
             <button class="btn" type="submit">Załóż konto</button>
         </div>
     </form:form>
-<%--    <form>--%>
-<%--        <div class="form-group">--%>
-<%--            <input type="email" name="email" placeholder="Email"/>--%>
-<%--        </div>--%>
-<%--        <div class="form-group">--%>
-<%--            <input type="password" name="password" placeholder="Hasło"/>--%>
-<%--        </div>--%>
-<%--        <div class="form-group">--%>
-<%--            <input type="password" name="password2" placeholder="Powtórz hasło"/>--%>
-<%--        </div>--%>
-
-<%--        <div class="form-group form-group--buttons">--%>
-<%--            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>--%>
-<%--            <button class="btn" type="submit">Załóż konto</button>--%>
-<%--        </div>--%>
-<%--    </form>--%>
 </section>
 
 <footer>
-    <div class="contact">
+    <div class="contact" id="concact">
         <h2>Skontaktuj się z nami</h2>
         <h3>Formularz kontaktowy</h3>
         <form>

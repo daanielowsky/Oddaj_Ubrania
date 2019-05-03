@@ -4,6 +4,7 @@ package com.github.daanielowsky.Oddaj_Ubrania.services;
 import com.github.daanielowsky.Oddaj_Ubrania.Repositories.UserRepository;
 import com.github.daanielowsky.Oddaj_Ubrania.dto.RegistrationFormDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,12 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(formDTO.getPassword()));
         userRepository.save(user);
 
+    }
+
+    @Transactional
+    public User getLoggerUser(){
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepository.findFirstByEmail(name);
     }
 
 
