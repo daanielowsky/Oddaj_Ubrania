@@ -28,4 +28,9 @@ public class HomeController {
         }
         return loggerUser.getFirstName();
     }
+
+    @GetMapping("/landingpage")
+    public String getLandingPageForLoggedUser() {
+        return "landingpage";
+    }
 }

@@ -41,6 +41,6 @@ public class LoginController {
             return "loginpage";
         }
         session.setAttribute("userID", existingUser.getId());
-        return "redirect:/";
+        return "redirect:/landingpage";
     }
 }

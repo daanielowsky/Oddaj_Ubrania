@@ -1,11 +1,4 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: DANIEL
-  Date: 29.04.2019
-  Time: 17:02
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pl">
@@ -20,7 +13,7 @@
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="#">Zaloguj</a></li>
+            <li><a href="/login">Zaloguj</a></li>
             <li class="highlighted"><a href="#">Załóż konto</a></li>
         </ul>
 
@@ -47,8 +40,8 @@
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="#" class="btn btn--without-border">Załóż konto</a>
-            <button class="btn" type="submit">Zaloguj się</button>
+            <a href="/register" class="btn btn--without-border">Załóż konto</a>
+            <button class="btn">Zaloguj się</button>
         </div>
     </form:form>
 </section>
