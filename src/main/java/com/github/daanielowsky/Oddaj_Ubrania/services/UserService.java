@@ -54,5 +54,14 @@ public class UserService {
         return userRepository.findFirstByEmail(name);
     }
 
+    @Transactional
+    public void editUser(User user){
+        User loggerUser = getLoggerUser();
+        loggerUser.setFirstName(user.getFirstName());
+        loggerUser.setLastName(user.getLastName());
+        loggerUser.setEmail(user.getEmail());
+        userRepository.save(loggerUser);
+    }
+
 
 }
