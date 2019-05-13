@@ -3,6 +3,7 @@ package com.github.daanielowsky.Oddaj_Ubrania.controllers;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
 import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -32,5 +33,12 @@ public class HomeController {
     @GetMapping("/landingpage")
     public String getLandingPageForLoggedUser() {
         return "landingpage";
+    }
+
+    @GetMapping("/profile")
+    public String getProfilePageForUsers(Model model){
+        User loggerUser = userService.getLoggerUser();
+        model.addAttribute("user", loggerUser);
+        return "profile";
     }
 }
