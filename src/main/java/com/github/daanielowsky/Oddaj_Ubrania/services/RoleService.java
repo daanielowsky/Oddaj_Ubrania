@@ -20,7 +20,7 @@ public class RoleService {
     }
 
     public Role gettingUserRole(){
-        Optional<Role> optionalRole = roleRepository.findByRole("ROLE_USER");
+        Optional<Role> optionalRole = roleRepository.findByRole("USER");
         Role role = optionalRole.orElse(null);
 
         if (role == null) {
