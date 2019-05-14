@@ -1,8 +1,10 @@
 package com.github.daanielowsky.Oddaj_Ubrania.controllers;
 
+import com.github.daanielowsky.Oddaj_Ubrania.Repositories.UserRepository;
 import com.github.daanielowsky.Oddaj_Ubrania.dto.PasswordDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
 import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,9 +18,13 @@ import javax.validation.Valid;
 public class HomeController {
 
     private UserService userService;
+    private PasswordEncoder passwordEncoder;
+    private UserRepository userRepository;
 
-    public HomeController(UserService userService) {
+    public HomeController(UserService userService, PasswordEncoder passwordEncoder, UserRepository userRepository) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/")
@@ -75,15 +81,18 @@ public class HomeController {
             return "passwordchange";
         }
         User loggerUser = userService.getLoggerUser();
-        if(loggerUser.getPassword() != password.getOldPassword()){
+        if(passwordEncoder.encode(loggerUser.getPassword()).equals(password.getOldPassword())){
             result.rejectValue("oldPassword", null, "Podane hasło nie jest prawidłowe.");
             return "passwordchange";
         }
-        if(password.getPassword() != password.getConfirmedPassword()){
+
+        if(!password.getPassword().equals(password.getConfirmedPassword())){
             result.rejectValue("confirmedPassword", null, "Hasło i powtórzone hasło nie są takie same.");
             return "passwordchange";
         }
-        loggerUser.setPassword(password.getPassword());
+
+        loggerUser.setPassword(passwordEncoder.encode(password.getPassword()));
+        userRepository.save(loggerUser);
         return "redirect:/profile";
     }
 }

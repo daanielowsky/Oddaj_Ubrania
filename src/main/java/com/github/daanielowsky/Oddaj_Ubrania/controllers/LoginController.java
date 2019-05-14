@@ -29,18 +29,17 @@ public class LoginController {
         return "loginpage";
     }
 
-
-    @PostMapping("/login")
-    public String loginValidation(@Valid @ModelAttribute User user, BindingResult result, HttpSession session){
-        if (result.hasErrors()) {
-            return "loginpage";
-        }
-        User existingUser = userRepository.findFirstByEmailAndPassword(user.getEmail(), user.getPassword());
-        if (existingUser == null) {
-            result.addError(new FieldError("user", "email", "Email lub hasło nieprawidłowe"));
-            return "loginpage";
-        }
-        session.setAttribute("userID", existingUser.getId());
-        return "redirect:/landingpage";
-    }
+//    @PostMapping("/login")
+//    public String loginValidation(@Valid @ModelAttribute User user, BindingResult result, HttpSession session){
+//        if (result.hasErrors()) {
+//            return "loginpage";
+//        }
+//        User existingUser = userRepository.findFirstByEmailAndPassword(user.getEmail(), user.getPassword());
+//        if (existingUser == null) {
+//            result.addError(new FieldError("user", "email", "Email lub hasło nieprawidłowe"));
+//            return "loginpage";
+//        }
+//        session.setAttribute("userID", existingUser.getId());
+//        return "redirect:/landingpage";
+//    }
 }

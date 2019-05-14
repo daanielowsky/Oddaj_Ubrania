@@ -48,7 +48,7 @@
         <p>Ilość zbiórek: ###</p>
         <p>Konto utworzono: ${user.created}</p>
         <p><button onclick="javascript:document.location.href='/profile/settings'">Edytuj profil</button>
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <sec:authorize access="hasRole('ROLE_USER')">
                 <button onclick="javascript:document.location.href='/admin/administrationpanel'">Panel Administratora</button>
             </sec:authorize> </p>
     </div>
