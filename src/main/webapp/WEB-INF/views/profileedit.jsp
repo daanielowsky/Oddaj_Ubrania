@@ -51,9 +51,9 @@
     <br>
     <div style="font-size: large; padding-left: 30%">
 <form:form method="post" modelAttribute="user">
-    Imie: <form:input path="firstName"/><form:errors path="firstName"/><br>
-    Nazwisko: <form:input path="lastName"/><form:errors path="lastName"/><br>
-    E-mail: <form:input path="email"/><form:errors path="email"/><br>
+    <p>Imie: <form:input path="firstName"/><form:errors path="firstName"/></p>
+    <p>Nazwisko: <form:input path="lastName"/><form:errors path="lastName"/></p>
+    <p>E-mail: <form:input path="email"/><form:errors path="email"/></p>
     <br>
     <button type="submit">Wyślij</button>
 </form:form>

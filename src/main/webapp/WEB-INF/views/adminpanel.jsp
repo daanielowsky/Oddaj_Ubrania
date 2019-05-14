@@ -1,18 +1,13 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>XDD</title>
-    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <html>
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <title>Oddaj Ubrania - Profil</title>
-        <link rel="stylesheet" href="/media/css/style.css"/>
-    </head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Oddaj Ubrania - Panel Admina</title>
+    <link rel="stylesheet" href="/media/css/style.css" />
+</head>
 <body>
 <header class="header--form-page">
     <nav class="container container--70">
@@ -47,13 +42,8 @@
     <br>
     <br>
     <div style="font-size: large; padding-left: 30%">
-        <form:form method="post" modelAttribute="password">
-            <p>Stare hasło: <form:password path="oldPassword"/><form:errors path="oldPassword"/></p>
-            <p>Nowe hasło: <form:password path="password"/><form:errors path="password"/></p>
-            <p>Powtórz hasło: <form:password path="confirmedPassword"/><form:errors path="confirmedPassword"/></p>
-            <br>
-            <button type="submit">Wyślij</button>
-        </form:form>
+        Ilość organizacji: ###
+        <button onclick="javascript:document.location.href='/admin/add_organization'">Dodaj organizację</button>
     </div>
 </header>
 </body>

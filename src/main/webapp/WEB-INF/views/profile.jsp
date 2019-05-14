@@ -1,11 +1,4 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: DANIEL
-  Date: 13.05.2019
-  Time: 17:52
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -56,7 +49,7 @@
         <p>Konto utworzono: ${user.created}</p>
         <p><button onclick="javascript:document.location.href='/profile/settings'">Edytuj profil</button>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <button onclick="javascript:document.location.href='/admin/'">Panel Administratora</button>
+                <button onclick="javascript:document.location.href='/admin/administrationpanel'">Panel Administratora</button>
             </sec:authorize> </p>
     </div>
 </header>

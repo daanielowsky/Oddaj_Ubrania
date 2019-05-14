@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/media/css/style.css" />
 </head>
 <body>
-<sec:authorize access="!isAuthenticated()">
 <header class="header--main-page">
     <nav class="container container--70">
         <ul class="nav--actions">
@@ -255,6 +254,5 @@
 </footer>
 
 <script src="/media/js/app.js"></script>
-</sec:authorize>
 </body>
 </html>
