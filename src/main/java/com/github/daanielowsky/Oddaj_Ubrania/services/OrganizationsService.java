@@ -6,6 +6,7 @@ import com.github.daanielowsky.Oddaj_Ubrania.entity.Organizations;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class OrganizationsService {
@@ -29,5 +30,10 @@ public class OrganizationsService {
     @Transactional
     public int getNumberOfOrganizations(){
         return organizationsRepository.getAll();
+    }
+
+    @Transactional
+    public List<Organizations> getAllOrganizations(){
+        return organizationsRepository.getAllBy();
     }
 }

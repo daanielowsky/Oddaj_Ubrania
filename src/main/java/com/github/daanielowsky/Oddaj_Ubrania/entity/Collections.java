@@ -26,8 +26,7 @@ public class Collections {
     @Column(nullable = false)
     private String whoWouldLikeToHelp;
 
-    @ManyToMany
-    @Column(nullable = false)
+    @ManyToOne
     private Organizations organizations;
 
     @Column(nullable = false)
@@ -47,8 +46,7 @@ public class Collections {
     @Column(nullable = false)
     private String hourOfPickup;
 
-    @ManyToMany
-    @Column(nullable = false)
+    @ManyToOne
     private User user;
 
 

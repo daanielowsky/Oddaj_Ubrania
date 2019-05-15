@@ -1,8 +1,10 @@
 package com.github.daanielowsky.Oddaj_Ubrania.controllers;
 
 import com.github.daanielowsky.Oddaj_Ubrania.Repositories.UserRepository;
+import com.github.daanielowsky.Oddaj_Ubrania.dto.CollectionDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.dto.PasswordDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
+import com.github.daanielowsky.Oddaj_Ubrania.services.OrganizationsService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -20,15 +22,21 @@ public class HomeController {
     private UserService userService;
     private PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
+    private OrganizationsService organizationsService;
 
-    public HomeController(UserService userService, PasswordEncoder passwordEncoder, UserRepository userRepository) {
+    public HomeController(UserService userService, PasswordEncoder passwordEncoder, UserRepository userRepository, OrganizationsService organizationsService) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
+        this.organizationsService = organizationsService;
     }
 
     @GetMapping("/")
-    public String getMainPage(){
+    public String getMainPage(Model model){
+        User loggerUser = userService.getLoggerUser();
+        if (loggerUser != null){
+            return "redirect:/landingpage";
+        }
         return "index";
     }
 
@@ -42,7 +50,9 @@ public class HomeController {
     }
 
     @GetMapping("/landingpage")
-    public String getLandingPageForLoggedUser() {
+    public String getLandingPageForLoggedUser(Model model) {
+        model.addAttribute("organizations", organizationsService.getAllOrganizations());
+        model.addAttribute("collection", new CollectionDTO());
         return "landingpage";
     }
 
@@ -50,6 +60,7 @@ public class HomeController {
     public String getProfilePageForUsers(Model model){
         User loggerUser = userService.getLoggerUser();
         model.addAttribute("user", loggerUser);
+
         return "profile";
     }
 
