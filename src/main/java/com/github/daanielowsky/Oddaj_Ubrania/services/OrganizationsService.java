@@ -22,6 +22,7 @@ public class OrganizationsService {
     public void registerOrganization(OrganizationsDTO organizationsDTO){
         Organizations organizations = new Organizations();
         organizations.setName(organizationsDTO.getName());
+        organizations.setMission(organizationsDTO.getMission());
         organizationsRepository.save(organizations);
     }
 

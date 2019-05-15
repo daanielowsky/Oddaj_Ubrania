@@ -17,6 +17,9 @@ public class Organizations {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @Column(nullable = false)
+    private String mission;
+
     private Long numberOfCollections = 0L;
 
 

@@ -13,4 +13,7 @@ public class OrganizationsDTO {
 
     @NotBlank @Size(min = 5)
     private String name;
+
+    @NotBlank @Size(min = 5)
+    private String mission;
 }
