@@ -47,12 +47,10 @@
         <p>E-mail: ${user.email}</p>
         <p>Ilość zbiórek: ###</p>
         <p>Konto utworzono: ${user.created}</p>
+        <br>
         <p><button onclick="javascript:document.location.href='/profile/settings'">Edytuj profil</button>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <button onclick="javascript:document.location.href='/admin/administrationpanel'">Panel Administratora</button>
-            </sec:authorize> </p>
-        <sec:authorize access="hasAnyRole('ADMIN')">
-                <button onclick="javascript:document.location.href='/admin/administrationpanel'">Panel Administratora2</button>
             </sec:authorize> </p>
     </div>
 </header>

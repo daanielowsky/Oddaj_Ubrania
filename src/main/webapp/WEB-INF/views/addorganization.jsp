@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -42,8 +43,11 @@
     <br>
     <br>
     <div style="font-size: large; padding-left: 30%">
-        Ilość organizacji: ${number}<br><br>
-        <button onclick="javascript:document.location.href='/admin/add_organization'">Dodaj organizację</button>
+        <form:form modelAttribute="organization">
+            <form:input path="name"/><form:errors path="name"/><br>
+            <br>
+            <button>Zarejestruj organizację</button>
+        </form:form>
     </div>
 </header>
 </body>

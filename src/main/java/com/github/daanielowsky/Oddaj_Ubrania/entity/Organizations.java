@@ -17,6 +17,7 @@ public class Organizations {
     @Column(nullable = false, unique = true)
     private String name;
 
-    private Long numberOfCollections;
+    private Long numberOfCollections = 0L;
+
 
 }
