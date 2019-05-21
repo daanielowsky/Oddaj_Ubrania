@@ -42,10 +42,12 @@
     <br>
     <br>
     <div style="font-size: large; padding-left: 30%">
-        Ilość organizacji: ${number}<br><br>
-        <button onclick="javascript:document.location.href='/admin/add_organization'">Dodaj organizację</button>
-        Lista użytkowników: <br><br>
-        <button onclick="javascript:document.location.href='/admin/show_users'">Zobacz</button>
+        Ilość organizacji: ${number}<br
+        <button onclick="javascript:document.location.href='/admin/add_organization'">Dodaj organizację</button><br><br>
+        Ilość użytkowników: ${usersamount} <br>
+        <button onclick="javascript:document.location.href='/admin/show_users'">Zobacz użytkowników</button><br><br>
+        Ilość adminów: ${adminsamount} <br>
+        <button onclick="javascript:document.location.href='/admin/show_admins'">Zobacz adminów</button>
     </div>
 </header>
 </body>

@@ -88,4 +88,18 @@ public class UserService {
         User userById = userRepository.getUserById(id);
         userRepository.delete(userById);
     }
+
+    @Transactional
+    public int getAmountOfUsers(){
+        return userRepository.getAmountOfUsers();
+    }
+    @Transactional
+    public List<User> getAllAdmins(){
+        return userRepository.getAllAdmins();
+    }
+
+    @Transactional
+    public int getAmountOfAdmins(){
+        return userRepository.getAmountOfAdmins();
+    }
 }

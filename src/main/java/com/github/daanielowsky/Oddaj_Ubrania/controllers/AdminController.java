@@ -5,6 +5,8 @@ import com.github.daanielowsky.Oddaj_Ubrania.dto.OrganizationsDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
 import com.github.daanielowsky.Oddaj_Ubrania.services.OrganizationsService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +18,8 @@ import java.util.List;
 
 @Controller
 public class AdminController {
+
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     private OrganizationsService organizationsService;
     private UserService userService;
@@ -37,7 +41,11 @@ public class AdminController {
     @GetMapping("/admin/administrationpanel")
     public String showAdminPanel(Model model){
         int numberOfOrganizations = organizationsService.getNumberOfOrganizations();
+        int amountOfUsers = userService.getAmountOfUsers();
+        int amountOfAdmins = userService.getAmountOfAdmins();
         model.addAttribute("number", numberOfOrganizations);
+        model.addAttribute("usersamount", amountOfUsers);
+        model.addAttribute("adminsamount",amountOfAdmins);
         return "adminpanel";
     }
 
@@ -85,5 +93,12 @@ public class AdminController {
     public String deleteUserByAdmin(@PathVariable("userid") Long id){
         userService.deleteUserAsAdmin(id);
         return "redirect:/admin/show_users";
+    }
+
+    @GetMapping("/admin/show_admins")
+    public String showAdminsList(Model model){
+        List<User> allAdmins = userService.getAllAdmins();
+        model.addAttribute("list", allAdmins);
+        return "userslist";
     }
 }
