@@ -32,9 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("select email, password, true from user where email = ?")
-                .authoritiesByUsernameQuery("select email, 'ROLE_USER' from user where email = ?");
-        auth.inMemoryAuthentication()
-                .withUser("marian@paździoch").password("qweqweqwe").authorities("ROLE_ADMIN").roles("ADMIN");
+                .authoritiesByUsernameQuery("SELECT email, role FROM user INNER JOIN users_roles \n" +
+                        "ON user.id = users_roles.user_id\n" +
+                        "INNER JOIN role ON users_roles.role_id = role.id\n" +
+                        "WHERE user.email = ?;");
     }
 
     @Override
@@ -44,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register").permitAll()
                 .antMatchers("/login").anonymous()
                 .antMatchers("/user", "/user/**").hasRole("USER")
-                .antMatchers("/admin", "/admin/**").permitAll()
+                .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
                 .antMatchers("/media/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
