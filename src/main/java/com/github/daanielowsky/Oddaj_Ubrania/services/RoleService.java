@@ -20,7 +20,18 @@ public class RoleService {
     }
 
     public Role gettingUserRole(){
-        Optional<Role> optionalRole = roleRepository.findByRole("USER");
+        Optional<Role> optionalRole = roleRepository.findByRole("ROLE_USER");
+        Role role = optionalRole.orElse(null);
+
+        if (role == null) {
+            logger.info("Nie znaleziono roli użytkownika");
+            return null;
+        }
+        return role;
+    }
+
+    public Role gettingAdminRole(){
+        Optional<Role> optionalRole = roleRepository.findByRole("ROLE_ADMIN");
         Role role = optionalRole.orElse(null);
 
         if (role == null) {

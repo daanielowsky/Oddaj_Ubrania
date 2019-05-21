@@ -102,4 +102,14 @@ public class UserService {
     public int getAmountOfAdmins(){
         return userRepository.getAmountOfAdmins();
     }
+
+    @Transactional
+    public void setUserAsAdmin(Long id){
+        User userById = getUserById(id);
+        List<Role> roles = userById.getRoles();
+        Role role = roleService.gettingAdminRole();
+        roles.add(role);
+        userById.setRoles(roles);
+        userRepository.save(userById);
+    }
 }

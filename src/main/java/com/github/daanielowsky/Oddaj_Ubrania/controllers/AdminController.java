@@ -3,8 +3,10 @@ package com.github.daanielowsky.Oddaj_Ubrania.controllers;
 
 import com.github.daanielowsky.Oddaj_Ubrania.dto.OrganizationsDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.Organizations;
+import com.github.daanielowsky.Oddaj_Ubrania.entity.Role;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
 import com.github.daanielowsky.Oddaj_Ubrania.services.OrganizationsService;
+import com.github.daanielowsky.Oddaj_Ubrania.services.RoleService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -24,10 +25,12 @@ public class AdminController {
 
     private OrganizationsService organizationsService;
     private UserService userService;
+    private RoleService roleService;
 
-    public AdminController(OrganizationsService organizationsService, UserService userService) {
+    public AdminController(OrganizationsService organizationsService, UserService userService, RoleService roleService) {
         this.organizationsService = organizationsService;
         this.userService = userService;
+        this.roleService = roleService;
     }
 
     @ModelAttribute ("username")
@@ -100,7 +103,7 @@ public class AdminController {
     public String showAdminsList(Model model){
         List<User> allAdmins = userService.getAllAdmins();
         model.addAttribute("list", allAdmins);
-        return "userslist";
+        return "adminslist";
     }
 
     @GetMapping("/admin/show_organizations")
@@ -125,6 +128,12 @@ public class AdminController {
     @GetMapping("/admin/deleteorganization/{orgid}")
     public String deleteOrganization(@PathVariable("orgid") Long id){
         organizationsService.deleteOrganization(id);
-        return "redirect:/admin/administarionpanel";
+        return "redirect:/admin/administrationpanel";
+    }
+
+    @GetMapping("/admin/add_admin/{userid}")
+    public String setUserAsAdmin(@PathVariable("userid") Long id){
+        userService.setUserAsAdmin(id);
+        return "redirect:/admin/administrationpanel";
     }
 }
