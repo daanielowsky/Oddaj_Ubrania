@@ -13,8 +13,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -100,9 +103,13 @@ public class AdminController {
     }
 
     @GetMapping("/admin/show_admins")
-    public String showAdminsList(Model model){
+    public String showAdminsList(Model model, HttpServletRequest request){
         List<User> allAdmins = userService.getAllAdmins();
         model.addAttribute("list", allAdmins);
+        String error = request.getParameter("error");
+        if (error != null){
+            model.addAttribute("noway", "Nie możesz usunąć samego siebie");
+        }
         return "adminslist";
     }
 
@@ -138,7 +145,11 @@ public class AdminController {
     }
 
     @GetMapping("/admin/deleteadmin/{userid}")
-    public String setAdminAsUser(@PathVariable ("userid") Long id){
+    public String setAdminAsUser(@PathVariable ("userid") Long id,Model model){
+        Long loggerUser = userService.getLoggerUser().getId();
+        if (loggerUser == id){
+            return "redirect:/admin/show_admins?error";
+        }
         userService.setAdminAsUser(id);
         return "redirect:/admin/administrationpanel";
     }
