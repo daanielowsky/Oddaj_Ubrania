@@ -8,10 +8,9 @@ import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -63,5 +62,22 @@ public class AdminController {
 
         model.addAttribute("list", listOfUsers);
         return "userslist";
+    }
+
+    @GetMapping("/admin/edituser/{userid}")
+    public String editForm(@PathVariable("userid") Long id, Model model){
+        User userById = userService.getUserById(id);
+        model.addAttribute("user", userById);
+        return "profileeditbyadmin";
+
+    }
+
+    @PostMapping("/admin/edituser/{userid}")
+    public String editUserByAdmin(@PathVariable("userid") Long id, @Valid @ModelAttribute User user, BindingResult result) {
+        if(result.hasErrors()) {
+            return "profileeditbyadmin";
+        }
+        userService.editUserAsAdmin(user, id);
+        return "redirect:/admin/show_users";
     }
 }

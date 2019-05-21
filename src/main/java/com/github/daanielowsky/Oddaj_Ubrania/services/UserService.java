@@ -68,5 +68,20 @@ public class UserService {
         return userRepository.findBy();
     }
 
+    @Transactional
+    public User getUserById(Long id){
+        return userRepository.getUserById(id);
+    }
+
+    @Transactional
+    public void editUserAsAdmin(User user, Long id){
+        User userById = userRepository.getUserById(id);
+        userById.setEmail(user.getEmail());
+        userById.setFirstName(user.getFirstName());
+        userById.setLastName(user.getLastName());
+        userRepository.save(userById);
+
+    }
+
 
 }
