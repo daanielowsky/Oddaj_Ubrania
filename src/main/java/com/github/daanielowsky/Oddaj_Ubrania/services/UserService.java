@@ -83,5 +83,9 @@ public class UserService {
 
     }
 
-
+    @Transactional
+    public void deleteUserAsAdmin(Long id) {
+        User userById = userRepository.getUserById(id);
+        userRepository.delete(userById);
+    }
 }

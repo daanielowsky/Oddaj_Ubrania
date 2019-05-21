@@ -80,4 +80,10 @@ public class AdminController {
         userService.editUserAsAdmin(user, id);
         return "redirect:/admin/show_users";
     }
+
+    @GetMapping("/admin/deleteuser/{userid}")
+    public String deleteUserByAdmin(@PathVariable("userid") Long id){
+        userService.deleteUserAsAdmin(id);
+        return "redirect:/admin/show_users";
+    }
 }

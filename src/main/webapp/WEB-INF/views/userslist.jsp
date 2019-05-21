@@ -48,6 +48,7 @@
             <c:out value="${lista.firstName}"/>
             <c:out value="${lista.lastName}"/><br>
             <button onclick="javascript:document.location.href='/admin/edituser/${lista.id}'">Edytuj</button>
+            <button onclick="javascript:document.location.href='/admin/deleteuser/${lista.id}'">Usuń</button>
             <br>
             <br>
         </c:forEach>
