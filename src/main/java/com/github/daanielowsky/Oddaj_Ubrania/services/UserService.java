@@ -112,4 +112,15 @@ public class UserService {
         userById.setRoles(roles);
         userRepository.save(userById);
     }
+
+    @Transactional
+    public void setAdminAsUser(Long id){
+        User userById = getUserById(id);
+        List<Role> roles = userById.getRoles();
+        roles.clear();
+        Role role = roleService.gettingUserRole();
+        roles.add(role);
+        userById.setRoles(roles);
+        userRepository.save(userById);
+    }
 }

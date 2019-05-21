@@ -136,4 +136,10 @@ public class AdminController {
         userService.setUserAsAdmin(id);
         return "redirect:/admin/administrationpanel";
     }
+
+    @GetMapping("/admin/deleteadmin/{userid}")
+    public String setAdminAsUser(@PathVariable ("userid") Long id){
+        userService.setAdminAsUser(id);
+        return "redirect:/admin/administrationpanel";
+    }
 }
