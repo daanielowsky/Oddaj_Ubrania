@@ -1,11 +1,19 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: DANIEL
+  Date: 13.05.2019
+  Time: 17:52
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Oddaj Ubrania - Panel Admina</title>
+    <title>Oddaj Ubrania - Profil</title>
     <link rel="stylesheet" href="/media/css/style.css" />
 </head>
 <body>
@@ -42,13 +50,12 @@
     <br>
     <br>
     <div style="font-size: large; padding-left: 30%">
-        Ilość organizacji: ${number}<br>
-        <button onclick="javascript:document.location.href='/admin/add_organization'">Dodaj organizację</button>
-        <button onclick="javascript:document.location.href='/admin/show_organizations'">Zobacz organizacje</button><br><br>
-        Ilość użytkowników: ${usersamount} <br>
-        <button onclick="javascript:document.location.href='/admin/show_users'">Zobacz użytkowników</button><br><br>
-        Ilość adminów: ${adminsamount} <br>
-        <button onclick="javascript:document.location.href='/admin/show_admins'">Zobacz adminów</button>
+        <form:form method="post" modelAttribute="organization">
+            <p>Nazwa: <form:input path="name"/><form:errors path="name"/></p>
+            <p>Misja: <form:input path="mission"/><form:errors path="mission"/></p>
+            <br>
+            <button type="submit">Wyślij</button>
+        </form:form>
     </div>
 </header>
 </body>

@@ -36,4 +36,23 @@ public class OrganizationsService {
     public List<Organizations> getAllOrganizations(){
         return organizationsRepository.getAllBy();
     }
+
+    @Transactional
+    public Organizations getOrganization(Long id){
+        return organizationsRepository.getOrganizationsById(id);
+    }
+
+    @Transactional
+    public void editOrganization(Organizations organizations, Long id){
+        Organizations organizationsById = organizationsRepository.getOrganizationsById(id);
+        organizationsById.setName(organizations.getName());
+        organizationsById.setMission(organizations.getMission());
+        organizationsRepository.save(organizationsById);
+    }
+
+    @Transactional
+    public void deleteOrganization(Long id){
+        Organizations organizationsById = organizationsRepository.getOrganizationsById(id);
+        organizationsRepository.delete(organizationsById);
+    }
 }

@@ -2,6 +2,7 @@ package com.github.daanielowsky.Oddaj_Ubrania.controllers;
 
 
 import com.github.daanielowsky.Oddaj_Ubrania.dto.OrganizationsDTO;
+import com.github.daanielowsky.Oddaj_Ubrania.entity.Organizations;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
 import com.github.daanielowsky.Oddaj_Ubrania.services.OrganizationsService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
@@ -86,13 +87,13 @@ public class AdminController {
             return "profileeditbyadmin";
         }
         userService.editUserAsAdmin(user, id);
-        return "redirect:/admin/show_users";
+        return "redirect:/admin/administrationpanel";
     }
 
     @GetMapping("/admin/deleteuser/{userid}")
     public String deleteUserByAdmin(@PathVariable("userid") Long id){
         userService.deleteUserAsAdmin(id);
-        return "redirect:/admin/show_users";
+        return "redirect:/admin/administrationpanel";
     }
 
     @GetMapping("/admin/show_admins")
@@ -100,5 +101,30 @@ public class AdminController {
         List<User> allAdmins = userService.getAllAdmins();
         model.addAttribute("list", allAdmins);
         return "userslist";
+    }
+
+    @GetMapping("/admin/show_organizations")
+    public String showOrganizationsList(Model model){
+        model.addAttribute("organizations", organizationsService.getAllOrganizations());
+        return "organizationslist";
+    }
+
+    @GetMapping("/admin/editorganization/{orgid}")
+    public String editOrganizationForm(@PathVariable("orgid") Long id, Model model){
+        Organizations organization = organizationsService.getOrganization(id);
+        model.addAttribute("organization", organization);
+        return "editorganization";
+    }
+
+    @PostMapping("/admin/editorganization/{orgid}")
+    public String editOrganization(@PathVariable("orgid") Long id, @ModelAttribute @Valid Organizations organizations, BindingResult result){
+        organizationsService.editOrganization(organizations, id);
+        return "redirect:/admin/administrationpanel";
+    }
+
+    @GetMapping("/admin/deleteorganization/{orgid}")
+    public String deleteOrganization(@PathVariable("orgid") Long id){
+        organizationsService.deleteOrganization(id);
+        return "redirect:/admin/administarionpanel";
     }
 }

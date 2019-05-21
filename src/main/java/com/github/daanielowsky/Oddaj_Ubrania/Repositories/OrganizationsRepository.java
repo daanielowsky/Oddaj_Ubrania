@@ -12,4 +12,6 @@ public interface OrganizationsRepository extends JpaRepository <Organizations, L
     int getAll();
 
     List<Organizations> getAllBy();
+
+    Organizations getOrganizationsById(Long id);
 }

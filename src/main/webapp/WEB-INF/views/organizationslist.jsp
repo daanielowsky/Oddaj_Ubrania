@@ -1,12 +1,13 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Oddaj Ubrania - Panel Admina</title>
-    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/style.css"/>
 </head>
 <body>
 <header class="header--form-page">
@@ -42,13 +43,17 @@
     <br>
     <br>
     <div style="font-size: large; padding-left: 30%">
-        Ilość organizacji: ${number}<br>
-        <button onclick="javascript:document.location.href='/admin/add_organization'">Dodaj organizację</button>
-        <button onclick="javascript:document.location.href='/admin/show_organizations'">Zobacz organizacje</button><br><br>
-        Ilość użytkowników: ${usersamount} <br>
-        <button onclick="javascript:document.location.href='/admin/show_users'">Zobacz użytkowników</button><br><br>
-        Ilość adminów: ${adminsamount} <br>
-        <button onclick="javascript:document.location.href='/admin/show_admins'">Zobacz adminów</button>
+        <c:forEach items="${organizations}" var="org">
+            Organizacja o ID: <c:out value="${org.id}"/><br>
+            <c:out value="${org.name}"/><br>
+            <small>
+                <c:out value="${org.mission}"/><br>
+            </small>
+            <button onclick="javascript:document.location.href='/admin/editorganization/${org.id}'">Edytuj</button>
+            <button onclick="javascript:document.location.href='/admin/deleteorganization/${org.id}'">Usuń</button>
+            <br>
+            <br>
+        </c:forEach>
     </div>
 </header>
 </body>
