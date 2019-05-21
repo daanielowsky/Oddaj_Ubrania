@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -54,5 +55,13 @@ public class AdminController {
         }
         organizationsService.registerOrganization(organizationsDTO);
         return "redirect:/admin/administrationpanel";
+    }
+
+    @GetMapping("/admin/show_users")
+    public String showListOfUsers(Model model){
+        List<User> listOfUsers = userService.getListOfUsers();
+
+        model.addAttribute("list", listOfUsers);
+        return "userslist";
     }
 }

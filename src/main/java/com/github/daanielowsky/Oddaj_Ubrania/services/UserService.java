@@ -63,5 +63,10 @@ public class UserService {
         userRepository.save(loggerUser);
     }
 
+    @Transactional
+    public List<User> getListOfUsers(){
+        return userRepository.findBy();
+    }
+
 
 }

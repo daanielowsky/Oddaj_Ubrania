@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -42,10 +43,13 @@
     <br>
     <br>
     <div style="font-size: large; padding-left: 30%">
-        Ilość organizacji: ${number}<br><br>
-        <button onclick="javascript:document.location.href='/admin/add_organization'">Dodaj organizację</button>
-        Lista użytkowników: <br><br>
-        <button onclick="javascript:document.location.href='/admin/show_users'">Zobacz</button>
+        <c:forEach items="${list}" var="lista">
+            Użytkownik o ID: <c:out value="${lista.id}"/><br>
+            <c:out value="${lista.firstName}"/>
+            <c:out value="${lista.lastName}"/>
+            <br>
+            <br>
+        </c:forEach>
     </div>
 </header>
 </body>
