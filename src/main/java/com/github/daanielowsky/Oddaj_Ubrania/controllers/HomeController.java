@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -116,5 +117,15 @@ public class HomeController {
         model.addAttribute("collection", new CollectionDTO());
         model.addAttribute("organizations", allOrganizations);
         return "createcollection";
+    }
+
+    @PostMapping("/user/create_collection")
+    public String metodka(@ModelAttribute @Valid CollectionDTO collectionDTO, BindingResult result){
+        if (result.hasErrors()) {
+            return "createcollection";
+        }
+        User loggerUser = userService.getLoggerUser();
+        collectionDTO.setUser(loggerUser);
+        return collectionDTO.toString();
     }
 }

@@ -100,41 +100,22 @@
 
                 <div class="form-section">
                     <h4>Komu chcesz pomóc?</h4>
-                    <div class="form-section--checkboxes">
-                        <div class="form-group form-group--checkbox">
-                            <label>
-                                <input type="checkbox" name="${collection.whoWouldLikeToHelp}" value="children"/>
-                                <span class="checkbox">dzieciom</span>
-                            </label>
-                        </div>
-
-                        <div class="form-group form-group--checkbox">
-                            <label>
-                                <input type="checkbox" name="${collection.whoWouldLikeToHelp}" value="mothers"/>
-                                <span class="checkbox">samotnym matkom</span>
-                            </label>
-                        </div>
-
-                        <div class="form-group form-group--checkbox">
-                            <label>
-                                <input type="checkbox" name="${collection.whoWouldLikeToHelp}" value="homeless"/>
-                                <span class="checkbox">bezdomnym</span>
-                            </label>
-                        </div>
-
-                        <div class="form-group form-group--checkbox">
-                            <label>
-                                <input type="checkbox" name="${collection.whoWouldLikeToHelp}" value="disabled"/>
-                                <span class="checkbox">niepełnosprawnym</span>
-                            </label>
-                        </div>
-
-                        <div class="form-group form-group--checkbox">
-                            <label>
-                                <input type="checkbox" name="${collection.whoWouldLikeToHelp}" value="old"/>
-                                <span class="checkbox">osobom starszym</span>
-                            </label>
-                        </div>
+                    <div>
+                        <form:checkbox path="whoWouldLikeToHelp"
+                                       value="kids"
+                        />dzieciom<br><br>
+                        <form:checkbox path="whoWouldLikeToHelp"
+                                       value="lonely-mothers"
+                        />samotnym matkom<br><br>
+                        <form:checkbox path="whoWouldLikeToHelp"
+                                       value="homeless"
+                        />bezdomnym<br><br>
+                        <form:checkbox path="whoWouldLikeToHelp"
+                                       value="disabled"
+                        />bezdomnym<br><br>
+                        <form:checkbox path="whoWouldLikeToHelp"
+                                       value="older"
+                        />osobom starszym<br>
                     </div>
                 </div>
             </div>
@@ -163,22 +144,22 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="address"/> </label>
+                            <label> Ulica <form:input path="street"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="city"/> </label>
+                            <label> Miasto <form:input path="city"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input type="text" name="postcode"/>
+                                Kod pocztowy <form:input path="postCode"/>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="phone" name="phone"/>
+                                Numer telefonu <form:input path="phoneNumber"/>
                             </label>
                         </div>
                     </div>
@@ -186,24 +167,24 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="data"/> </label>
+                            <label> Data <form:input path="dateOfPickup" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="time"/> </label>
+                            <label> Godzina <form:input path="hourOfPickup"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <textarea name="more_info" rows="5"></textarea>
+                                <form:textarea path="comments"/>
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group form-group--buttons">
                     <br>
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <form:button>Wyślij</form:button>
                     <br>
                     <br>
                     <br>

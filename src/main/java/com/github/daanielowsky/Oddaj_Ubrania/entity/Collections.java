@@ -17,7 +17,7 @@ public class Collections {
     private Long id;
 
     @Column(nullable = false)
-    private ArrayList<String> thingsToGiveaway;
+    private String thingsToGiveaway;
 
     @Column(nullable = false)
     private Long numberOfPlasticBags;
@@ -41,6 +41,9 @@ public class Collections {
     private Integer phoneNumber;
 
     private String comments;
+
+    @Column(nullable = false)
+    private String city;
 
     @Column(nullable = false)
     private String dateOfPickup;

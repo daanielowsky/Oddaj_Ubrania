@@ -6,44 +6,48 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 @Data @AllArgsConstructor @NoArgsConstructor
 public class CollectionDTO {
 
-    @NotBlank
-    private ArrayList<String> thingsToGiveaway;
+    @NotEmpty
+    private String thingsToGiveaway;
 
-    @NotBlank
+    @NotNull
     private Long numberOfPlasticBags;
 
-    @NotBlank
+    @NotEmpty
     private String localization;
 
-    @NotBlank
+    @NotEmpty
+    private String city;
+
+    @NotEmpty
     private String whoWouldLikeToHelp;
 
-    @NotBlank
+    @NotEmpty
     private Organizations organizations;
 
-    @NotBlank
+    @NotEmpty
     private String street;
 
-    @NotBlank
+    @NotEmpty
     private String postCode;
 
-    @NotBlank
-    private Integer phoneNumber;
+    @NotEmpty
+    private Long phoneNumber;
 
+    @NotEmpty
     private String comments;
 
-    @NotBlank
+    @NotEmpty
     private String dateOfPickup;
 
-    @NotBlank
+    @NotEmpty
     private String hourOfPickup;
 
-    @NotBlank
     private User user;
 }
