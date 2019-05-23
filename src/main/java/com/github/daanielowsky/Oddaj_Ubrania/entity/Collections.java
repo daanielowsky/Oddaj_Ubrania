@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
@@ -15,7 +17,7 @@ public class Collections {
     private Long id;
 
     @Column(nullable = false)
-    private String thingsToGiveaway;
+    private ArrayList<String> thingsToGiveaway;
 
     @Column(nullable = false)
     private Long numberOfPlasticBags;

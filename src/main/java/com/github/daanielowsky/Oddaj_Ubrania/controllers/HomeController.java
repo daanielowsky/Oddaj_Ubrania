@@ -3,6 +3,7 @@ package com.github.daanielowsky.Oddaj_Ubrania.controllers;
 import com.github.daanielowsky.Oddaj_Ubrania.Repositories.UserRepository;
 import com.github.daanielowsky.Oddaj_Ubrania.dto.CollectionDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.dto.PasswordDTO;
+import com.github.daanielowsky.Oddaj_Ubrania.entity.Organizations;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
 import com.github.daanielowsky.Oddaj_Ubrania.services.OrganizationsService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -105,5 +108,13 @@ public class HomeController {
         loggerUser.setPassword(passwordEncoder.encode(password.getPassword()));
         userRepository.save(loggerUser);
         return "redirect:/profile";
+    }
+
+    @GetMapping("/user/create_collection")
+    public String createCollectionForm(Model model){
+        List<Organizations> allOrganizations = organizationsService.getAllOrganizations();
+        model.addAttribute("collection", new CollectionDTO());
+        model.addAttribute("organizations", allOrganizations);
+        return "createcollection";
     }
 }

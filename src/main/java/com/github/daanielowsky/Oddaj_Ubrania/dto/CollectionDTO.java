@@ -7,12 +7,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 
 @Data @AllArgsConstructor @NoArgsConstructor
 public class CollectionDTO {
 
     @NotBlank
-    private String thingsToGiveaway;
+    private ArrayList<String> thingsToGiveaway;
 
     @NotBlank
     private Long numberOfPlasticBags;
