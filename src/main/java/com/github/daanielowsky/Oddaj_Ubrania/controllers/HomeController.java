@@ -5,6 +5,7 @@ import com.github.daanielowsky.Oddaj_Ubrania.dto.CollectionDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.dto.PasswordDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.Organizations;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
+import com.github.daanielowsky.Oddaj_Ubrania.services.CollectionsService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.OrganizationsService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,10 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,12 +26,14 @@ public class HomeController {
     private PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
     private OrganizationsService organizationsService;
+    private CollectionsService collectionsService;
 
-    public HomeController(UserService userService, PasswordEncoder passwordEncoder, UserRepository userRepository, OrganizationsService organizationsService) {
+    public HomeController(UserService userService, PasswordEncoder passwordEncoder, UserRepository userRepository, OrganizationsService organizationsService, CollectionsService collectionsService) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.organizationsService = organizationsService;
+        this.collectionsService = collectionsService;
     }
 
     @GetMapping("/")
@@ -124,6 +125,7 @@ public class HomeController {
         if (result.hasErrors()) {
             return "createcollection";
         }
-        return ""
+        collectionsService.saveCollection(collectionDTO);
+        return "redirect:/landingpage";
     }
 }

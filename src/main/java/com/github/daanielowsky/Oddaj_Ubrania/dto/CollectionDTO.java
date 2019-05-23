@@ -13,40 +13,39 @@ import javax.validation.constraints.NotNull;
 @Data @AllArgsConstructor @NoArgsConstructor
 public class CollectionDTO {
 
-    @NotEmpty
+    @NotNull
     private String thingsToGiveaway;
 
     @NotNull
     private Long numberOfPlasticBags;
 
-    @NotEmpty
+    @NotNull
     private String localization;
 
-    @NotEmpty
+    @NotNull
     private String city;
 
-    @NotEmpty
+    @NotNull
     private String whoWouldLikeToHelp;
 
-    @NotEmpty
+    @NotNull
     private Organizations organizations;
 
-    @NotEmpty
+    @NotNull
     private String street;
 
-    @NotEmpty
+    @NotNull
     private String postCode;
 
-    @NotEmpty
+    @NotNull
     private Long phoneNumber;
 
-    @NotEmpty
     private String comments;
 
-    @NotEmpty
+    @NotNull
     private String dateOfPickup;
 
-    @NotEmpty
+    @NotNull
     private String hourOfPickup;
 
     private User user;
