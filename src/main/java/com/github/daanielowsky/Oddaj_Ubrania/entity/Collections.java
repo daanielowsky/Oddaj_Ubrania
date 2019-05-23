@@ -38,7 +38,7 @@ public class Collections {
     private String postCode;
 
     @Column(nullable = false)
-    private Integer phoneNumber;
+    private Long phoneNumber;
 
     private String comments;
 

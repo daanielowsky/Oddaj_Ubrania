@@ -4,7 +4,7 @@ import com.github.daanielowsky.Oddaj_Ubrania.dto.CollectionDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.dto.RegistrationFormDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.Collections;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
-import org.hibernate.mapping.Collection;
+
 
 public class Converter {
 
@@ -17,10 +17,20 @@ public class Converter {
 
     }
 
-    public static Collection convertToCollectionFromDTO(CollectionDTO dto){
+    public static Collections convertToCollectionFromDTO(CollectionDTO dto){
         Collections collections = new Collections();
         collections.setCity(dto.getCity());
         collections.setComments(dto.getComments());
-        
+        collections.setDateOfPickup(dto.getDateOfPickup());
+        collections.setOrganizations(dto.getOrganizations());
+        collections.setHourOfPickup(dto.getHourOfPickup());
+        collections.setLocalization(dto.getLocalization());
+        collections.setNumberOfPlasticBags(dto.getNumberOfPlasticBags());
+        collections.setPhoneNumber(dto.getPhoneNumber());
+        collections.setThingsToGiveaway(dto.getThingsToGiveaway());
+        collections.setWhoWouldLikeToHelp(dto.getWhoWouldLikeToHelp());
+        collections.setPostCode(dto.getPostCode());
+        collections.setStreet(dto.getStreet());
+        return collections;
     }
 }

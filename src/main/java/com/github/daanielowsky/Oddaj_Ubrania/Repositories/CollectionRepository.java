@@ -1,7 +1,7 @@
 package com.github.daanielowsky.Oddaj_Ubrania.Repositories;
 
-import org.hibernate.mapping.Collection;
+import com.github.daanielowsky.Oddaj_Ubrania.entity.Collections;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CollectionRepository extends JpaRepository <Collection, Long> {
+public interface CollectionRepository extends JpaRepository <Collections, Long> {
 }

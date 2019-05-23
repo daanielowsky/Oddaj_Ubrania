@@ -124,8 +124,6 @@ public class HomeController {
         if (result.hasErrors()) {
             return "createcollection";
         }
-        User loggerUser = userService.getLoggerUser();
-        collectionDTO.setUser(loggerUser);
-        return collectionDTO.toString();
+        return ""
     }
 }
