@@ -22,7 +22,7 @@
             <li><a href="/">O co chodzi?</a></li>
             <li><a href="/">O nas</a></li>
             <li><a href="/">Fundacje i organizacje</a></li>
-            <li><a href="#concact">Kontakt</a></li>
+            <li><a href="/concact">Kontakt</a></li>
         </ul>
     </nav>
 </header>
@@ -46,36 +46,36 @@
     </form:form>
 </section>
 
-<footer>
-    <div class="contact" id="concact">
-        <h2>Skontaktuj się z nami</h2>
-        <h3>Formularz kontaktowy</h3>
-        <form:form modelAttribute="contact" method="post" action="/user/message">
-            <div class="form-group form-group--50">
-                <form:input path="name" placeholder="Imię" />
-            </div>
-            <div class="form-group form-group--50">
-                <form:input path="surname" placeholder="Nazwisko" />
-            </div>
+<%--<footer>--%>
+<%--    <div class="contact" id="concact">--%>
+<%--        <h2>Skontaktuj się z nami</h2>--%>
+<%--        <h3>Formularz kontaktowy</h3>--%>
+<%--        <form:form modelAttribute="contact" method="post" action="/user/message">--%>
+<%--            <div class="form-group form-group--50">--%>
+<%--                <form:input path="name" placeholder="Imię" />--%>
+<%--            </div>--%>
+<%--            <div class="form-group form-group--50">--%>
+<%--                <form:input path="surname" placeholder="Nazwisko" />--%>
+<%--            </div>--%>
 
-            <div class="form-group">
-                <form:input path="email" rows="1"/>
-            </div>
+<%--            <div class="form-group">--%>
+<%--                <form:input path="email" rows="1"/>--%>
+<%--            </div>--%>
 
-            <div class="form-group">
-                <form:textarea path="message" rows="1"/>
-            </div>
+<%--            <div class="form-group">--%>
+<%--                <form:textarea path="message" rows="1"/>--%>
+<%--            </div>--%>
 
-            <button class="btn" type="submit">Wyślij</button>
-        </form:form>
-    </div>
-    <div class="bottom-line">
-        <span class="bottom-line--copy">Copyright &copy; 2018</span>
-        <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="/media/images/icon-facebook.svg"/></a>
-            <a href="#" class="btn btn--small"><img src="/media/images/icon-instagram.svg"/></a>
-        </div>
-    </div>
-</footer>
+<%--            <button class="btn" type="submit">Wyślij</button>--%>
+<%--        </form:form>--%>
+<%--    </div>--%>
+<%--    <div class="bottom-line">--%>
+<%--        <span class="bottom-line--copy">Copyright &copy; 2018</span>--%>
+<%--        <div class="bottom-line--icons">--%>
+<%--            <a href="#" class="btn btn--small"><img src="/media/images/icon-facebook.svg"/></a>--%>
+<%--            <a href="#" class="btn btn--small"><img src="/media/images/icon-instagram.svg"/></a>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</footer>--%>
 </body>
 </html>

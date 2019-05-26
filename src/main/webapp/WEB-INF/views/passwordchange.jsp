@@ -37,7 +37,7 @@
                 >Fundacje i organizacje</a
                 >
             </li>
-            <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
+            <li><a href="/concact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>
     <br>

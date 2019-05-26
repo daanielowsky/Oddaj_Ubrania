@@ -3,8 +3,8 @@ package com.github.daanielowsky.Oddaj_Ubrania.controllers;
 
 import com.github.daanielowsky.Oddaj_Ubrania.dto.OrganizationsDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.Organizations;
-import com.github.daanielowsky.Oddaj_Ubrania.entity.Role;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
+import com.github.daanielowsky.Oddaj_Ubrania.services.MessagesService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.OrganizationsService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.RoleService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
@@ -13,9 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -29,11 +27,13 @@ public class AdminController {
     private OrganizationsService organizationsService;
     private UserService userService;
     private RoleService roleService;
+    private MessagesService messagesService;
 
-    public AdminController(OrganizationsService organizationsService, UserService userService, RoleService roleService) {
+    public AdminController(OrganizationsService organizationsService, UserService userService, RoleService roleService, MessagesService messagesService) {
         this.organizationsService = organizationsService;
         this.userService = userService;
         this.roleService = roleService;
+        this.messagesService = messagesService;
     }
 
     @ModelAttribute ("username")
@@ -50,9 +50,11 @@ public class AdminController {
         int numberOfOrganizations = organizationsService.getNumberOfOrganizations();
         int amountOfUsers = userService.getAmountOfUsers();
         int amountOfAdmins = userService.getAmountOfAdmins();
+        Long aLong = messagesService.countAllMessages();
         model.addAttribute("number", numberOfOrganizations);
         model.addAttribute("usersamount", amountOfUsers);
         model.addAttribute("adminsamount",amountOfAdmins);
+        model.addAttribute("messagescount", aLong);
         return "adminpanel";
     }
 
@@ -152,5 +154,17 @@ public class AdminController {
         }
         userService.setAdminAsUser(id);
         return "redirect:/admin/administrationpanel";
+    }
+
+    @GetMapping("/admin/show_messages")
+    public String showMessages(Model model){
+        model.addAttribute("messages", messagesService.getAllMessages());
+        return "showmessages";
+    }
+
+    @GetMapping("/admin/deletemessage/{id}")
+    public String deleteMessage(@PathVariable("id") Long id){
+        messagesService.deleteMessage(id);
+        return "redirect:/admin/show_messages";
     }
 }

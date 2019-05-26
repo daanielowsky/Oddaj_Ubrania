@@ -1,8 +1,10 @@
 package com.github.daanielowsky.Oddaj_Ubrania.services;
 
 import com.github.daanielowsky.Oddaj_Ubrania.dto.CollectionDTO;
+import com.github.daanielowsky.Oddaj_Ubrania.dto.MessageDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.dto.RegistrationFormDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.Collections;
+import com.github.daanielowsky.Oddaj_Ubrania.entity.Messages;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
 
 
@@ -32,5 +34,14 @@ public class Converter {
         collections.setPostCode(dto.getPostCode());
         collections.setStreet(dto.getStreet());
         return collections;
+    }
+
+    public static Messages convertToMessagesFromDTO(MessageDTO dto){
+        Messages messages = new Messages();
+        messages.setEmail(dto.getEmail());
+        messages.setLastname(dto.getSurname());
+        messages.setName(dto.getName());
+        messages.setMessage(dto.getMessage());
+        return messages;
     }
 }

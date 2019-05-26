@@ -2,10 +2,12 @@ package com.github.daanielowsky.Oddaj_Ubrania.controllers;
 
 import com.github.daanielowsky.Oddaj_Ubrania.Repositories.UserRepository;
 import com.github.daanielowsky.Oddaj_Ubrania.dto.CollectionDTO;
+import com.github.daanielowsky.Oddaj_Ubrania.dto.MessageDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.dto.PasswordDTO;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.Organizations;
 import com.github.daanielowsky.Oddaj_Ubrania.entity.User;
 import com.github.daanielowsky.Oddaj_Ubrania.services.CollectionsService;
+import com.github.daanielowsky.Oddaj_Ubrania.services.MessagesService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.OrganizationsService;
 import com.github.daanielowsky.Oddaj_Ubrania.services.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,13 +29,15 @@ public class HomeController {
     private UserRepository userRepository;
     private OrganizationsService organizationsService;
     private CollectionsService collectionsService;
+    private MessagesService messagesService;
 
-    public HomeController(UserService userService, PasswordEncoder passwordEncoder, UserRepository userRepository, OrganizationsService organizationsService, CollectionsService collectionsService) {
+    public HomeController(UserService userService, PasswordEncoder passwordEncoder, UserRepository userRepository, OrganizationsService organizationsService, CollectionsService collectionsService, MessagesService messagesService) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.organizationsService = organizationsService;
         this.collectionsService = collectionsService;
+        this.messagesService = messagesService;
     }
 
     @GetMapping("/")
@@ -58,6 +62,7 @@ public class HomeController {
     public String getLandingPageForLoggedUser(Model model) {
         model.addAttribute("organizations", organizationsService.getAllOrganizations());
         model.addAttribute("collection", new CollectionDTO());
+        model.addAttribute("concact", new MessageDTO());
         return "landingpage";
     }
 
@@ -121,11 +126,28 @@ public class HomeController {
     }
 
     @PostMapping("/user/create_collection")
-    public String metodka(@ModelAttribute @Valid CollectionDTO collectionDTO, BindingResult result){
+    public String creatingCollection(@ModelAttribute @Valid CollectionDTO collectionDTO, BindingResult result){
         if (result.hasErrors()) {
             return "createcollection";
         }
         collectionsService.saveCollection(collectionDTO);
+        return "redirect:/landingpage";
+    }
+
+    @GetMapping("/concact")
+    public String concactForm(Model model){
+
+        model.addAttribute("concact", new MessageDTO());
+
+        return "concact";
+    }
+
+    @PostMapping("/concact")
+    public String creatingMessage(@ModelAttribute @Valid MessageDTO messageDTO, BindingResult result){
+        if (result.hasErrors()) {
+            return "concact";
+        }
+        messagesService.creatingMessage(messageDTO);
         return "redirect:/landingpage";
     }
 }

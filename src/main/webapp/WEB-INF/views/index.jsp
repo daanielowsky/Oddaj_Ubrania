@@ -21,7 +21,7 @@
             <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="#about_us" class="btn btn--without-border">O nas</a></li>
             <li><a href="#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
+            <li><a href="/concact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>
 
@@ -88,7 +88,7 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="/register" class="btn btn--large">Załóż konto</a>
 </section>
 
 <section class="about-us" id="about_us">

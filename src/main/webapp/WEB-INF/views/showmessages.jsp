@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -44,13 +45,17 @@
     <br>
     <br>
     <br>
-    <div style="font-size: large; padding-left: 30%">
-        <form:form method="post" modelAttribute="organization">
-            Nazwa: <form:input path="name"/><form:errors path="name"/><br>
-            Misja: <form:input path="mission"/><form:errors path="mission"/><br>
+    <div style="font-size: large; padding-left: 30%; padding-right: 10%">
+        <c:forEach items="${messages}" var="message">
+            Imię i nazwisko: <c:out value="${message.name} "/>
+            <c:out value="${message.lastname}"/><br>
+            Email: <c:out value="${message.email}"/><br>
+            Treść: <c:out value="${message.message}"/><br><br>
+            <button onclick="javascript:document.location.href='/admin/deletemessage/${message.id}'">Usuń</button>
             <br>
-            <button>Zarejestruj organizację</button>
-        </form:form>
+            <hr>
+            <br>
+        </c:forEach>
     </div>
 </header>
 </body>

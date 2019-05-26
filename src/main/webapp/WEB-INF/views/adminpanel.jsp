@@ -32,7 +32,7 @@
                 >Fundacje i organizacje</a
                 >
             </li>
-            <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
+            <li><a href="/concact" class="btn btn--without-border">Kontakt</a></li>
             <li><a href="/user/create_collection" class="btn btn--without-border">Zorganizuj zbiórkę!</a></li>
 
         </ul>
@@ -50,7 +50,9 @@
         Ilość użytkowników: ${usersamount} <br>
         <button onclick="javascript:document.location.href='/admin/show_users'">Zobacz użytkowników</button><br><br>
         Ilość adminów: ${adminsamount} <br>
-        <button onclick="javascript:document.location.href='/admin/show_admins'">Zobacz adminów</button>
+        <button onclick="javascript:document.location.href='/admin/show_admins'">Zobacz adminów</button><br><br>
+        Wiadomości[${messagescount}] <br>
+        <button onclick="javascript:document.location.href='/admin/show_messages'">Zobacz wiadomości</button>
     </div>
 </header>
 </body>

@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -44,13 +45,28 @@
     <br>
     <br>
     <br>
-    <div style="font-size: large; padding-left: 30%">
-        <form:form method="post" modelAttribute="organization">
-            Nazwa: <form:input path="name"/><form:errors path="name"/><br>
-            Misja: <form:input path="mission"/><form:errors path="mission"/><br>
-            <br>
-            <button>Zarejestruj organizację</button>
-        </form:form>
+    <div style="font-size: large; padding-left: 30%;padding-right: 10%;">
+        <div class="contact">
+            <h2>Skontaktuj się z nami</h2>
+            <h3>Formularz kontaktowy</h3>
+            <form:form method="post" action="/concact" class="form--contact" modelAttribute="concact">
+                <div class="form-group form-group--50">
+                    <form:input path="name" placeholder="Imię"/>
+                </div>
+                <div class="form-group form-group--50">
+                    <form:input path="surname" placeholder="Nazwisko"/>
+                </div>
+
+                <div class="form-group">
+            <form:textarea path="email" placeholder="Email"/>
+                </div>
+                <div class="form-group">
+            <form:textarea path="message" placeholder="Wiadomość"/>
+                </div>
+
+                <button class="btn" type="submit">Wyślij</button>
+            </form:form>
+        </div>
     </div>
 </header>
 </body>
