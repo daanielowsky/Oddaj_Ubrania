@@ -150,4 +150,9 @@ public class HomeController {
         messagesService.creatingMessage(messageDTO);
         return "redirect:/landingpage";
     }
+
+    @GetMapping("/aboutus")
+    public String aboutus(){
+        return "aboutus";
+    }
 }
