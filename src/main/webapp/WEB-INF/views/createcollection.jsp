@@ -42,6 +42,8 @@
                 >
             </li>
             <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
+            <li><a href="/user/create_collection" class="btn btn--without-border">Zorganizuj zbiórkę!</a></li>
+
         </ul>
     </nav>
     <br>
