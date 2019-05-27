@@ -89,6 +89,14 @@ public class AdminController {
 
     }
 
+    @GetMapping("/admin/ban_user/{userid}")
+    public String banningUser(@PathVariable("userid") Long id){
+        User userById = userService.getUserById(id);
+        userById.setEnabled(false);
+        userService.editUserAsAdmin(userById, id);
+        return "redirect:/admin/show_users";
+    }
+
     @PostMapping("/admin/edituser/{userid}")
     public String editUserByAdmin(@PathVariable("userid") Long id, @Valid @ModelAttribute User user, BindingResult result) {
         if(result.hasErrors()) {

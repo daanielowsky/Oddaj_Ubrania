@@ -41,13 +41,13 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles = new ArrayList<>();
 
-
+    @Column(name = "enabled")
+    private boolean enabled = true;
 
     @PrePersist
     public void prePersist(){
         created = LocalDate.now();
     }
-
 
     @Override
     public String toString() {

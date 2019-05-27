@@ -52,6 +52,7 @@
             <button onclick="javascript:document.location.href='/admin/edituser/${lista.id}'">Edytuj</button>
             <button onclick="javascript:document.location.href='/admin/deleteuser/${lista.id}'">Usuń</button>
             <button onclick="javascript:document.location.href='/admin/add_admin/${lista.id}'">Dodaj Admina</button>
+            <button onclick="javascript:document.location.href='/admin/ban_user/${lista.id}'">Zablokuj użytkownika</button>
             <br>
             <br>
         </c:forEach>
