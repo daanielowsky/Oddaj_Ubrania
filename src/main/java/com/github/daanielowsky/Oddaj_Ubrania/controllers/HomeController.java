@@ -155,4 +155,11 @@ public class HomeController {
     public String aboutus(){
         return "aboutus";
     }
+
+    @GetMapping("/mycollections")
+    public String showCollections (Model model){
+        Long loggerUser = userService.getLoggerUser().getId();
+        model.addAttribute("collections", collectionsService.getListOfCollections(loggerUser));
+        return "mycollections";
+    }
 }

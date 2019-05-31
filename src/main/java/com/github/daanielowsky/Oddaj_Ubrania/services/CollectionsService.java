@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import java.util.List;
+
 import static com.github.daanielowsky.Oddaj_Ubrania.services.Converter.*;
 
 
@@ -45,5 +47,10 @@ public class CollectionsService {
         organizationsRepository.save(organizationsById);
 
         collectionRepository.save(collections);
+    }
+
+    @Transactional
+    public List<Collections> getListOfCollections(Long id){
+        return collectionRepository.getSortedListOfCollections(id);
     }
 }
